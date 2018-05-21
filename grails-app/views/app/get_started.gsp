@@ -17,7 +17,7 @@
     $(function(){
       STEPS = [
         {
-          content: '<p>${message(code:"app.get_started.tour.organizations")}</p>',
+          content: "<p>${message(code: 'app.get_started.tour.step.organizations')}</p>",
           highlightTarget: true,
           nextButton: true,
           target: $('#menu-organizations'),
@@ -25,7 +25,7 @@
           at: 'center right'
         },
         {
-          content: '<p>${message(code:"app.get_started.tour.ehrs")}</p>',
+          content: "<p>${message(code: 'app.get_started.tour.step.ehrs')}</p>",
           highlightTarget: true,
           nextButton: true,
           target: $('#menu-ehrs'),
@@ -33,7 +33,7 @@
           at: 'center right'
         },
         {
-          content: '<p>${message(code:"app.get_started.tour.templates")}</p>',
+          content: "<p>${message(code: 'app.get_started.tour.step.templates')}</p>",
           highlightTarget: true,
           nextButton: true,
           target: $('#menu-templates'),
@@ -41,7 +41,7 @@
           at: 'center right'
         },
         {
-          content: '<p>${message(code:"app.get_started.tour.contributions")}</p>',
+          content: "<p>${message(code: 'app.get_started.tour.step.contributions')}</p>",
           highlightTarget: true,
           nextButton: true,
           target: $('#menu-contributions'),
@@ -49,7 +49,7 @@
           at: 'center right'
         },
         {
-          content: '<p>${message(code:"app.get_started.tour.queries")}</p>',
+          content: "<p>${message(code: 'app.get_started.tour.step.queries')}</p>",
           highlightTarget: true,
           nextButton: true,
           target: $('#menu-queries'),
@@ -57,7 +57,7 @@
           at: 'center right'
         },
         {
-          content: '<p>${message(code:"app.get_started.tour.top_menu")}</p>',
+          content: "<p>${message(code: 'app.get_started.tour.step.user_menu')}</p>",
           highlightTarget: true,
           nextButton: true,
           target: $('#top-user-menu'),
@@ -65,10 +65,7 @@
           at: 'bottom left'
         }
       ];
-
-      Tourist.Tip.Base.prototype.nextButtonTemplate = Tourist.Tip.Base.prototype.nextButtonTemplate.replace('Next step →', '${message(code:"app.get_started.tour.next").decodeHTML()}');
-      Tourist.Tip.Base.prototype.finalButtonTemplate = Tourist.Tip.Base.prototype.finalButtonTemplate.replace('Finish up', '${message(code:"app.get_started.tour.finish").decodeHTML()}');
-
+      
       TOUR = new Tourist.Tour({
        stepOptions: {},
        steps: STEPS,
@@ -81,9 +78,8 @@
          }
        }
       });
-
+      
       $('#tour-btn').on('click', function(){
-
         TOUR.start();
       });
     });
@@ -111,7 +107,7 @@
       <div class="col-lg-12">
         <h2>3. <g:message code="app.get_started.forum" /></h2>
         <p><g:message code="app.get_started.forum.text" /></p>
-        <a href="https://www.cabolabs.com/forum/categories/ehrserver" target="_blank"><g:message code="app.get_started.forum.link" /></a>
+        <a href="http://cabolabs.com/forum/categories/ehrserver" target="_blank"><g:message code="app.get_started.forum.link" /></a>
         <br/><br/>
       </div>
       <div class="col-lg-12">
