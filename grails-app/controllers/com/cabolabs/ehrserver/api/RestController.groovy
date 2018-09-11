@@ -759,6 +759,10 @@ class RestController {
    @SecuredStateless
    def ehrCreate(String uid, String subjectUid, String format)
    {
+      uid = uid ?: request.JSON.'uid'
+      subjectUid = subjectUid?: request.JSON.'subjectUid'
+      format = format ?: request.JSON.'format'
+
       if (!subjectUid)
       {
          renderError(message(code:'rest.ehrCreate.error.subjectUid.required'), '999', 400)
