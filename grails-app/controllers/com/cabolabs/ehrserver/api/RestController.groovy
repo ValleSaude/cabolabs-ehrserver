@@ -125,10 +125,9 @@ class RestController {
    def login()
    {
       // https://github.com/ppazos/cabolabs-ehrserver/blob/rest_security/src/groovy/com/cabolabs/security/AuthFilter.groovy
-      // TODO check JSON payload for params...
-      String username = params.username
-      String password = params.password
-      String organization_number = params.organization
+      String username = params.username?: request.getHeader('username')
+      String password = params.password?: request.getHeader('password')
+      String organization_number = params.organization?: request.getHeader('organization')
 
       try
       {
@@ -278,6 +277,10 @@ class RestController {
    @SecuredStateless
    def commit(String ehrUid, String auditSystemId, String auditCommitter)
    {
+      ehrUid = ehrUid?: request.getHeader('ehrUid')
+      auditSystemId = auditSystemId?: request.getHeader('auditSystemId')
+      auditCommitter = auditCommitter?: request.getHeader('auditCommitter')
+
       log.info( "commit received "+ params.list('versions').size() + " versions"  )
 
       if (!ehrUid)
