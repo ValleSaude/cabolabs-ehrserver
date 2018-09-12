@@ -50,3 +50,5 @@
 # avoid committing local changes to db config to the shared repo
 /grails-app/conf/DataSource.groovy
 
+.slcache/
+commits/
