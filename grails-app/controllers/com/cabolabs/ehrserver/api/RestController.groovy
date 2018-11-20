@@ -264,10 +264,10 @@ class RestController {
      */
     @SecuredStateless
     def commit(String ehrUid, String auditSystemId, String auditCommitter) {
-        def json = request.JSON
-        ehrUid = ehrUid ?: json?.ehrUid
-        auditSystemId = auditSystemId ?: json?.auditSystemId
-        auditCommitter = auditCommitter ?: json?.auditCommitter
+//        def json = request.JSON
+        ehrUid = ehrUid ?: request.getHeader('ehrUid')
+        auditSystemId = auditSystemId ?: request.getHeader('auditSystemId')
+        auditCommitter = auditCommitter ?: request.getHeader('auditCommitter')
 
         log.info("commit received " + params.list('versions').size() + " versions")
 
@@ -1608,9 +1608,9 @@ class RestController {
         ehrUid = ehrUid?: json?.ehrUid
         from = from?: json?.from
         to = to?: json?.to
-        max = max?: json?.max
-        offset = offset?: json?.offset
-        format = format?: json?.format
+        max = max?: json?.max?: 0
+        offset = offset?: json?.offset?: 0
+        format = format?: json?.format?: 'json'
         // verify permissions by organization of the EHR with ehrUid
         if (!ehrUid) {
             renderError(message(code: 'rest.error.ehr_uid_required'), "456", 400)
