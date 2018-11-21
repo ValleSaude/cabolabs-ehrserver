@@ -403,7 +403,7 @@
         </archetype_id>
         <term_definitions code="at0000">
           <items id="description">*A generic section header which should be renamed in a template to suit a specific clinical context.(en)</items>
-          <items id="text">*Ad hoc heading(en)</items>
+          <items id="text">Queixa Principal</items>
         </term_definitions>
       </children>
       <children xsi:type="C_ARCHETYPE_ROOT">
