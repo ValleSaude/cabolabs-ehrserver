@@ -38,8 +38,9 @@ pipeline {
             environment {
                 CHART_NAME = "openehr-server"
                 HELM_NAMESPACE = "stage-limited"
+                APP_NAMESPACE = "stage"
                 HELM_TIMEOUT = '300'
-                HELM_UPGRADE = 'helm upgrade --install --tiller-namespace ${HELM_NAMESPACE} --description ${IMAGE_TAG} --wait --timeout ${HELM_TIMEOUT} --kubeconfig ./build-deploy/${ENVIRONMENT}-kubeconfig --debug -f ./build-deploy/${CHART_NAME}/values-${ENVIRONMENT}.yaml --set image.tag=${IMAGE_TAG} ${CHART_NAME} ./build-deploy/${CHART_NAME}/'
+                HELM_UPGRADE = 'helm upgrade --install --tiller-namespace ${HELM_NAMESPACE} --namespace ${APP_NAMESPACE} --description ${IMAGE_TAG} --wait --timeout ${HELM_TIMEOUT} --kubeconfig ./build-deploy/${ENVIRONMENT}-kubeconfig --debug -f ./build-deploy/${CHART_NAME}/values-${ENVIRONMENT}.yaml --set image.tag=${IMAGE_TAG} ${CHART_NAME} ./build-deploy/${CHART_NAME}/'
             }
             steps {
                 sh "mkdir -p ${PROJECTPATH}/build-deploy/${CHART_NAME}"
