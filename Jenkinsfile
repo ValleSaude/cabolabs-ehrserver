@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build & Push Docker Image') {
             environment {
-                APP = "openehr"
+                APP = "openehrserver"
             }
             steps {
                 sh "mkdir -p ${PROJECTPATH}/build-deploy/${APP}"
