@@ -31,7 +31,7 @@ pipeline {
                 sh "aws s3 cp s3://vallesaude-dockerfiles/release-image-jenkins.sh build-deploy/."
                 sh "aws s3 cp s3://vallesaude-dockerfiles/${APP} build-deploy/${APP}/. --recursive"
                 sh "chmod +x ./build-deploy/release-image-jenkins.sh"
-                sh "./build-deploy/release-image-jenkins.sh ${APP}"
+                sh "cd build-deploy ; ./release-image-jenkins.sh ${APP}"
             }
         }
         /*stage('Deploy') {
@@ -50,7 +50,7 @@ pipeline {
         }
         stage('Clean') {
             steps {
-                sh "rm -rf build-deploy"
+                sh "rm -rf ${PROJECTPATH}/build-deploy"
             }
         }*/
     }
