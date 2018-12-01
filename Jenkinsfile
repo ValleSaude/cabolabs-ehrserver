@@ -34,7 +34,7 @@ pipeline {
                 sh "cd build-deploy ; ./release-image-jenkins.sh ${APP}"
             }
         }
-        /*stage('Deploy') {
+        stage('Deploy') {
             environment {
                 CHART_NAME = "openehr-server"
                 HELM_NAMESPACE = "stage-limited"
@@ -52,6 +52,6 @@ pipeline {
             steps {
                 sh "rm -rf ${PROJECTPATH}/build-deploy"
             }
-        }*/
+        }
     }
 }
