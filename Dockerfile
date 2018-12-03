@@ -1,6 +1,6 @@
 FROM java
 
-ENV JAVA_OPTS="-Djava.awt.headless=true -XX:MaxPermSize=768m -XX:+UseConcMarkSweepGC"
+#ENV JAVA_OPTS="-Djava.awt.headless=true -XX:MaxPermSize=768m -XX:+UseConcMarkSweepGC"
 
 # install grails
 RUN curl -L https://github.com/grails/grails-core/releases/download/v2.5.6/grails-2.5.6.zip  -o /grails.zip
