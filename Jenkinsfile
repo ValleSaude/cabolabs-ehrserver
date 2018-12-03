@@ -28,7 +28,10 @@ pipeline {
                 AWS_REGION = "us-east-1"
             }
             steps {
-                sh "docker build ${REPOSITORY}:${IMAGE_TAG} -f ./Dockerfile"
+                sh "docker build -t openehr -f ."
+                sh "docker tag openehr:latest ${REPOSITORY}:${IMAGE_TAG}"
+                sh "docker tag openehr:latest ${REPOSITORY}:${ENVIRONMENT}"
+                sh "docker tag openehr:latest ${REPOSITORY}:latest"
                 sh "`aws ecr get-login --region ${AWS_REGION} --no-include-email`"
                 sh "docker push ${REPOSITORY}:${IMAGE_TAG}"
 	            sh "docker push ${REPOSITORY}:${ENVIRONMENT}"
