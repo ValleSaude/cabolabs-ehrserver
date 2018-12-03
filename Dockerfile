@@ -1,7 +1,6 @@
-FROM java
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update
-RUN apt-get install -y mysql-server
+FROM 582236112611.dkr.ecr.us-east-1.amazonaws.com/vallesaude-java:latest
+
+ENV JAVA_OPTS="-Djava.awt.headless=true -XX:MaxPermSize=768m -XX:+UseConcMarkSweepGC"
 
 # install grails
 RUN curl -L https://github.com/grails/grails-core/releases/download/v2.5.6/grails-2.5.6.zip  -o /grails.zip
@@ -15,8 +14,4 @@ ENV PATH $GRAILS_HOME/bin:$PATH
 
 EXPOSE 8090
 RUN grails dependency-report
-RUN chmod +x /app/docker-entrypoint.sh
-# Define default command.
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
 CMD ["grails", "-Dserver.port=8090", "run-app"]
-
