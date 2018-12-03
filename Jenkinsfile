@@ -28,7 +28,7 @@ pipeline {
                 AWS_REGION = "us-east-1"
             }
             steps {
-                sh "docker build -t openehr -f ."
+                sh "docker build -t openehr ."
                 sh "docker tag openehr:latest ${REPOSITORY}:${IMAGE_TAG}"
                 sh "docker tag openehr:latest ${REPOSITORY}:${ENVIRONMENT}"
                 sh "docker tag openehr:latest ${REPOSITORY}:latest"
