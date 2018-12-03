@@ -28,7 +28,7 @@ pipeline {
                 AWS_REGION = "us-east-1"
             }
             steps {
-                sh "docker build -t ${REPOSITORY}:${IMAGE_TAG} -t ${REPOSITORY}:${ENVIRONMENT} -f ./Dockerfile"
+                sh "docker build -f ./Dockerfile -t ${REPOSITORY}:${IMAGE_TAG} -t ${REPOSITORY}:${ENVIRONMENT}"
                 sh "`aws ecr get-login --region ${AWS_REGION} --no-include-email`"
                 sh "docker push ${REPOSITORY}:${IMAGE_TAG}"
 	            sh "docker push ${REPOSITORY}:${ENVIRONMENT}"

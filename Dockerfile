@@ -2,6 +2,8 @@ FROM 582236112611.dkr.ecr.us-east-1.amazonaws.com/vallesaude-java:latest
 
 ENV JAVA_OPTS="-Djava.awt.headless=true -XX:MaxPermSize=768m -XX:+UseConcMarkSweepGC"
 
+RUN apk add --no-cache curl
+
 # install grails
 RUN curl -L https://github.com/grails/grails-core/releases/download/v2.5.6/grails-2.5.6.zip  -o /grails.zip
 RUN unzip /grails.zip -d /opt
