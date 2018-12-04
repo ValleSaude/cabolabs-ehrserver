@@ -24,18 +24,8 @@ pipeline {
         stage('Build & Push Docker Image') {
             environment {
                 APP = "openehrserver"
-                //REPOSITORY = "582236112611.dkr.ecr.us-east-1.amazonaws.com/vallesaude-openehrserver"
-                //AWS_REGION = "us-east-1"
             }
             steps {
-                /*sh "docker build -t openehr ."
-                sh "docker tag openehr:latest ${REPOSITORY}:${IMAGE_TAG}"
-                sh "docker tag openehr:latest ${REPOSITORY}:${ENVIRONMENT}"
-                sh "docker tag openehr:latest ${REPOSITORY}:latest"
-                sh "`aws ecr get-login --region ${AWS_REGION} --no-include-email`"
-                sh "docker push ${REPOSITORY}:${IMAGE_TAG}"
-	            sh "docker push ${REPOSITORY}:${ENVIRONMENT}"
-            	sh "docker push ${REPOSITORY}:latest"*/
                 sh "mkdir -p ${PROJECTPATH}/build-deploy/${APP}"
                 sh "mv ${PROJECTPATH}/target/ROOT.war ${PROJECTPATH}/build-deploy/${APP}/"
                 sh "aws s3 cp s3://vallesaude-dockerfiles/release-image-jenkins.sh build-deploy/."
