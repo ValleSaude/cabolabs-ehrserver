@@ -934,13 +934,13 @@ gr_account.save(failOnError:true, flush:true)
            adminUser = new User(username: 'admin', email: 'elvis@geekguysolutions.com.br', password: '123456', enabled: true)
            adminUser.save(failOnError: true,  flush: true)
 
-           accManUser = new User(username: 'accman', email: 'elvis@geekguysolutions.com.br', password: '123456', enabled: true)
+           accManUser = new User(username: 'accman', email: 'rafael@redsoftware.com.br', password: '123456', enabled: true)
            accManUser.save(failOnError: true,  flush: true)
 
-           orgManUser = new User(username: 'orgman', email: 'elvis@geekguysolutions.com.br', password: '123456', enabled: true)
+           orgManUser = new User(username: 'orgman', email: 'rafael@vallesaude.com.br', password: '123456', enabled: true)
            orgManUser.save(failOnError: true,  flush: true)
 
-           user = new User(username: 'user', email: 'elvis@geekguysolutions.com.br', password: '123456', enabled: true)
+           user = new User(username: 'user', email: 'daniel@vallesaude.com.br', password: '123456', enabled: true)
            user.save(failOnError: true,  flush: true)
          }
          else
