@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         PROJECTPATH = '/jenkins/workspace/EKS-Stage-ValleSaude-OpenEHR'
-        ENVIRONMENT = 'prod'
+        ENVIRONMENT = 'stage'
         IMAGE_TAG = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
     }
     stages {
@@ -37,8 +37,8 @@ pipeline {
         stage('Deploy') {
             environment {
                 CHART_NAME = "openehr-server"
-                HELM_NAMESPACE = "prod-limited"
-                APP_NAMESPACE = "prod"
+                HELM_NAMESPACE = "stage-limited"
+                APP_NAMESPACE = "stage"
                 HELM_TIMEOUT = '300'
                 HELM_UPGRADE = 'helm upgrade --install --tiller-namespace ${HELM_NAMESPACE} --namespace ${APP_NAMESPACE} --description ${IMAGE_TAG} --wait --timeout ${HELM_TIMEOUT} --kubeconfig ./build-deploy/${ENVIRONMENT}-kubeconfig -f ./build-deploy/${CHART_NAME}/values-${ENVIRONMENT}.yaml --set image.tag=${IMAGE_TAG} ${CHART_NAME} ./build-deploy/${CHART_NAME}/'
             }
