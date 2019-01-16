@@ -3,7 +3,7 @@ pipeline {
     environment {
         PROJECTPATH = '/jenkins/workspace/EKS-Stage-ValleSaude-OpenEHR'
         ENVIRONMENT = 'prod'
-        IMAGE_TAG = sh(returnStdout: true, script: 'git rev-parse --short HEAD')
+        IMAGE_TAG = sh(returnStdout: true, script: 'git rev-parse HEAD')
     }
     stages {
         stage('Build Application') {
